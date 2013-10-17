@@ -27,10 +27,6 @@ publishArtifact in Test := false
 pomIncludeRepository := { _ => false }
 
 pomExtra := (
-  <organization>
-    <name>E-BIZNEXT</name>
-    <url>http://www.ebiznext.com</url>
-  </organization>
   <url>https://github.com/ebiznext/sbt-soapui</url>
   <licenses>
     <license>
