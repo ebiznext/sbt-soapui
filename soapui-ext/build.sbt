@@ -2,15 +2,19 @@ name := "soapui-ext"
 
 organization := "com.ebiznext.soapui"
 
-version := "4.5.1"
+lazy val soapuiVersion = "4.5.0"
+
+version := soapuiVersion
 
 scalaVersion := "2.10.2"
 
 libraryDependencies ++= Seq(
-    "eviware" % "soapui" % "4.5.1" % "provided",
+    "eviware" % "soapui" % soapuiVersion % "provided",
     "jetty" % "jetty" % "6.1.26" % "provided",
     "log4j" % "log4j" % "1.2.14" % "provided"
 )
+
+resolvers += "SOAPUI Repository" at "http://www.soapui.org/repository/maven2"
 
 publishMavenStyle := true
 

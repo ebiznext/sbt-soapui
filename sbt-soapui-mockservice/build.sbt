@@ -8,6 +8,8 @@ version := "0.1"
 
 scalaVersion := "2.10.2"
 
+resolvers += "SOAPUI Repository" at "http://www.soapui.org/repository/maven2"
+
 publishMavenStyle := true
 
 publishTo := {

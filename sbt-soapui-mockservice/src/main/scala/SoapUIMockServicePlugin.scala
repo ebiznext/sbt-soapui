@@ -22,10 +22,10 @@ object SoapUIMockServicePlugin extends Plugin {
   private object SoapUIDefaults extends Keys {
     
     val settings = Seq(
-        soapuiVersion := "4.5.1",
+        soapuiVersion := "4.5.0",
         soapuiStopPort := 8081,
         // ajout des dépendances soapui dans la configuration spécifique au plugin
-        libraryDependencies ++= Dependencies.dependencies(soapuiVersion.value, Seq(Config)),
+        libraryDependencies ++= Dependencies.dependencies(soapuiVersion.value)(Seq(Config)),
         mockServices := Nil)
   }
 

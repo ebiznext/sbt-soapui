@@ -7,7 +7,7 @@ import Keys._
  */
 object BuildProjects extends Build {
 
-  lazy val soapuiVersion = "4.5.1"
+  lazy val soapuiVersion = "4.5.0"
 
   def subProject(name:String) : Project = {
     Project(name, file(name))

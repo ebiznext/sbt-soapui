@@ -14,7 +14,7 @@ import java.net.InetAddress
  */
 class SoapUIMockService(val classpath : Seq[File]) {
 
-    lazy val oldContextClassLoader = Thread.currentThread.getContextClassLoader
+    //lazy val oldContextClassLoader = Thread.currentThread.getContextClassLoader
 
     lazy val classLoader = ClasspathUtilities.toLoader(classpath)
 
@@ -26,9 +26,15 @@ class SoapUIMockService(val classpath : Seq[File]) {
     lazy val setStopPortMethod = soapUICoreExtClass.getMethod("setStopPort", java.lang.Integer.TYPE)
 
     def addThreadMonitoring(stopPort : Int) : Unit = {
-      val sbtSoapUICore = soapUICoreExtConstructor.newInstance()
-      setStopPortMethod.invoke(sbtSoapUICore, stopPort.asInstanceOf[AnyRef])
-      setSoapUICoreMethod.invoke(null, sbtSoapUICore.asInstanceOf[AnyRef])
+      try{
+        //Thread.currentThread.setContextClassLoader(classLoader)
+        val sbtSoapUICore = soapUICoreExtConstructor.newInstance()
+        setStopPortMethod.invoke(sbtSoapUICore, stopPort.asInstanceOf[AnyRef])
+        setSoapUICoreMethod.invoke(null, sbtSoapUICore.asInstanceOf[AnyRef])
+      }
+      finally{
+        //Thread.currentThread.setContextClassLoader(oldContextClassLoader)          
+      }
     }
 
     lazy val soapUIMockServiceClass = classLoader.loadClass("com.eviware.soapui.tools.SoapUIMockServiceRunner")

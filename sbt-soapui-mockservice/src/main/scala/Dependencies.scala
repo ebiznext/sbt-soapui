@@ -8,7 +8,7 @@ import _root_.sbt._
  */
 object Dependencies {
 
-  def dependencies(soapuiVersion: String, configs : Seq[Configuration]) : Seq[ModuleID] = Seq[ModuleID](
+  def dependencies(soapuiVersion: String)(configs : Seq[Configuration]) : Seq[ModuleID] = Seq[ModuleID](
     "com.ebiznext.soapui" %% "soapui-ext" % soapuiVersion,
 
     "eviware" % "soapui" % soapuiVersion,
