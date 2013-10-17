@@ -11,3 +11,19 @@ project/plugins/project/
 
 # Scala-IDE specific
 .scala_dependencies
+
+sbt-soapui-mockservice/.cache
+
+sbt-soapui-mockservice/.classpath
+
+sbt-soapui-mockservice/.project
+
+*.prefs
+
+soapui-ext/.cache
+
+soapui-ext/.classpath
+
+soapui-ext/.project
+
+sublime
