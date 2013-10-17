@@ -60,7 +60,7 @@ object SoapUIMockServicePlugin extends Plugin {
                 service.run(soapuiVersion.value, projectFile, mockService.port, true)
           }
         },
-        test in IntegrationTest <<= (test in IntegrationTest) dependsOn (mock in IntegrationTest),
+        //test in IntegrationTest <<= (test in IntegrationTest) dependsOn (mock in IntegrationTest),
         test in Test <<= (test in Test) dependsOn (mock in Test)
     )
   }
