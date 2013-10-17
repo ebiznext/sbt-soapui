@@ -7,6 +7,8 @@ import Keys._
  */
 object BuildProjects extends Build {
 
+  lazy val soapuiVersion = "4.5.1"
+
   def subProject(name:String) : Project = {
     Project(name, file(name))
     .settings(
@@ -18,9 +20,9 @@ object BuildProjects extends Build {
     subProject("soapui-ext")
     .settings(
       organization := "com.ebiznext.soapui",
-      version := "4.5.1",
+      version := soapuiVersion,
       libraryDependencies ++= Seq(
-        "eviware" % "soapui" % "4.5.1" % "provided",
+        "eviware" % "soapui" % soapuiVersion % "provided",
         "jetty" % "jetty" % "6.1.26" % "provided",
         "log4j" % "log4j" % "1.2.14" % "provided"
       )
