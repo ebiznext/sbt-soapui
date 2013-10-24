@@ -47,10 +47,14 @@ object SoapUIMockServicePlugin extends Plugin {
     }
 
     val settings = Seq(ivyConfigurations += Config)  ++ SoapUIDefaults.settings ++ Seq(
+        managedClasspath in mock <<= (classpathTypes in mock, update) map { (ct, report) =>
+          Classpaths.managedJars(Config, ct, report)
+        },
         // définition de la tâche mock
         mock := {
           val s: TaskStreams = streams.value
-          val classpath : Seq[File] = update.value.select( configurationFilter(name = "soapui") )
+          val classpath : Seq[File] = ((managedClasspath in mock).value).files
+          //update.value.select( configurationFilter(name = "soapui") )
           val service = new SoapUIMockService(classpath)
           s.log.info("Stopping Previously started SoapUI SBT MockService Runners")
           service.stop(soapuiStopPort.value)
